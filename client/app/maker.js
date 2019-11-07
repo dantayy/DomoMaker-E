@@ -16,15 +16,11 @@ const handleDomo = (e) => {
 };
 
 const handleView = (e) => {
-    e.preventDefault();
-    
     if(e.target.value === "all"){
         loadAllDomosFromServer();
     } else {
         loadDomosFromServer();
     }
-    
-    return false;
 };
 
 const DomoForm = (props) => {
@@ -70,11 +66,11 @@ const DomoList = (props) => {
 
 const DomoView = (props) => {
     return (
-        <form id="domoView" onChange={handleView} name="domoView" className="domoForm">
+        <form id="domoView" name="domoView" className="domoForm">
             <label htmlFor="view">View All Domos - </label>
-            <input type="radio" name="view" value="all" />
+            <input type="radio" onClick={handleView} name="view" value="all" />
             <label htmlFor="view">View Your Domos - </label>
-            <input type="radio" name="view" value="user" checked />
+            <input type="radio" onClick={handleView} name="view" value="user" defaultChecked />
         </form>
     );
 };

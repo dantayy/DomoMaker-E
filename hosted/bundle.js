@@ -18,15 +18,11 @@ var handleDomo = function handleDomo(e) {
 };
 
 var handleView = function handleView(e) {
-    e.preventDefault();
-
     if (e.target.value === "all") {
         loadAllDomosFromServer();
     } else {
         loadDomosFromServer();
     }
-
-    return false;
 };
 
 var DomoForm = function DomoForm(props) {
@@ -99,19 +95,19 @@ var DomoList = function DomoList(props) {
 var DomoView = function DomoView(props) {
     return React.createElement(
         "form",
-        { id: "domoView", onChange: handleView, name: "domoView", className: "domoForm" },
+        { id: "domoView", name: "domoView", className: "domoForm" },
         React.createElement(
             "label",
             { htmlFor: "view" },
             "View All Domos - "
         ),
-        React.createElement("input", { type: "radio", name: "view", value: "all" }),
+        React.createElement("input", { type: "radio", onClick: handleView, name: "view", value: "all" }),
         React.createElement(
             "label",
             { htmlFor: "view" },
             "View Your Domos - "
         ),
-        React.createElement("input", { type: "radio", name: "view", value: "user", checked: true })
+        React.createElement("input", { type: "radio", onClick: handleView, name: "view", value: "user", defaultChecked: true })
     );
 };
 
